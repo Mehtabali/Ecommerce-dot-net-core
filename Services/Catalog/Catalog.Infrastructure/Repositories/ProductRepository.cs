@@ -41,7 +41,7 @@ namespace Catalog.Infrastructure.Repositories
             return await _products.Find(_ => true).ToListAsync();
         }
 
-        public async Task<ProductBrand> GetBrandsByIdAsync(string brandId)
+        public async Task<ProductBrand> GetBrandByIdAsync(string brandId)
         {
             return await _brands.Find(x => x.Id == brandId).FirstOrDefaultAsync();
         }

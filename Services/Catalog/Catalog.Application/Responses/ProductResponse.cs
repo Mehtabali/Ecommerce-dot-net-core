@@ -18,5 +18,6 @@ namespace Catalog.Application.Responses
         [BsonRepresentation(BsonType.Decimal128)]
         public decimal Price { get; init; }
         public DateTimeOffset CreatedDate { get; init; }
+        public DateTimeOffset UpdatedDate { get; init; }
     }
 }
