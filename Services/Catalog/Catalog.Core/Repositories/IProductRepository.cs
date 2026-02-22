@@ -13,6 +13,6 @@ public interface IProductRepository
     Task<Product> CreateProduct(Product product);
     Task<bool> UpdateProduct(Product product);
     Task<bool> DeleteProduct(string productId);
-    Task<ProductBrand> GetBrandsByIdAsync(string brandId);
+    Task<ProductBrand> GetBrandByIdAsync(string brandId);
     Task<ProductType> GetTypesByIdAsync(string typeId);
 }

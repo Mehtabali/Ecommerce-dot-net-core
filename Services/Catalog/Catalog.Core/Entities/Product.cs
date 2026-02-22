@@ -1,8 +1,5 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Catalog.Core.Entities
 {
@@ -18,5 +15,6 @@ namespace Catalog.Core.Entities
         [BsonRepresentation(BsonType.Decimal128)]
         public decimal Price { get; set; }
         public DateTimeOffset CreatedDate { get; set; }
+        public DateTimeOffset UpdatedDate { get; set; }
     }
 } 
