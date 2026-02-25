@@ -86,7 +86,7 @@ namespace Catalog.API.Controllers
         public async Task<ActionResult<IEnumerable<ProductDto>>> GetProductsByBrand(string brand)
         {
             var query = new GetProductByBrandQuery(brand);
-            var result = _mediatr.Send(query);
+            var result = await _mediatr.Send(query);
             return Ok(result);
         }
     }
