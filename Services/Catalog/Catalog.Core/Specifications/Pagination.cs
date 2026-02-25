@@ -17,9 +17,9 @@ namespace Catalog.Core.Specifications
             Count = count;
             Data = data;
         }
-        public int PageIndex;
-        public int PageSize;
-        public int Count;
-        public IReadOnlyCollection<T> Data;
+        public int PageIndex { get; set; }
+        public int PageSize { get; set; }
+        public int Count { get; set; }
+        public IReadOnlyCollection<T> Data { get; set; }
     }
 }

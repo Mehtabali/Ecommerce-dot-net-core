@@ -71,9 +71,9 @@ namespace Catalog.Application.Mappers
                 product.Summary,
                 product.Description,
                 product.ImageFile,
-                new BrandDto(product.Brand.Id, product.Brand.Name),
-                new TypeDto(product.Type.Id, product.Type.Name),
-                product.Price,
+                new BrandDto(product?.Brand?.Id ?? "", product?.Brand?.Name?? ""),
+                new TypeDto(product?.Type?.Id ?? "", product?.Type?.Name ?? ""),
+                product?.Price ?? 0,
                 DateTimeOffset.UtcNow
             );
         }
