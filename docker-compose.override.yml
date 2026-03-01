@@ -1,25 +1,36 @@
 services:
   catalogdb:
-    image: mongo:7.0
     container_name: catalogdb
     restart: always
     ports:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+  
+  basketdb:
+    container_name: basketdb
+    restart: always
+    ports:
+      - "6379:6379"  
 
+  
   catalog:
-    container_name: catalog.api
-    build:
-      context: .
-      dockerfile: Services/Catalog/Catalog.API/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - DatabaseSettings__ConnectionString=mongodb://catalogdb:27017
+      - "DatabaseSettings__ConnectionString=mongodb://catalogdb:27017"
+      - "DatabaseSettings__DatabaseName=CatalogDb"
+      - "DatabaseSettings__ProductCollectionName=Products"
+      - "DatabaseSettings__BrandCollectionName=Brands"
+      - "DatabaseSettings__TypeCollectionName=Types" 
     depends_on:
-      - catalogdb
+      - catalogdb          
     ports:
-      - "8000:8080"
-
-volumes:
-  mongo_data:
+      - "8000:8080"  
+  basket:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "CacheSettings__ConnectionString=basketdb:6379"      
+    depends_on:
+      - basketdb
+    ports:
+      - "8001:8080"
