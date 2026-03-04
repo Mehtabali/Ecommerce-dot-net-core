@@ -27,7 +27,7 @@ namespace Discount.Application.Handlers
             var coupon = await _discountRepository.GetDiscount(request.productName);
             if (coupon == null)
             {
-                throw new RpcException(new Status(StatusCode.Internal, $"Could not create discount for product: {request.productName}"));
+                throw new RpcException(new Status(StatusCode.Internal, $"Could not get discount for product: {request.productName}"));
             }
             return coupon.ToDto();
         } 
